@@ -18,7 +18,9 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.delete_forever),
-            onPressed: () {},
+            onPressed: () {
+              Provider.of<ScanListProvider>(context,listen: false).esborraTots();
+            },
           )
         ],
       ),
@@ -39,7 +41,7 @@ class _HomeScreenBody extends StatelessWidget {
     // Canviar per a anar canviant entre pantalles
     final currentIndex = uiProvider.selectedMenuOpt;
 
-    final scanListProvider = Provider.of<ScanListProvider>(context);
+    final scanListProvider = Provider.of<ScanListProvider>(context, listen: false);
 
     switch (currentIndex) {
       case 0:

@@ -19,6 +19,9 @@ class ScanButton extends StatelessWidget {
         String barcodeScanRes = "geo:123123123";
         final scanListProvider = Provider.of<ScanListProvider>(context, listen: false);
         scanListProvider.nouScan(barcodeScanRes);
+        String barcodeScanRes1 = "https://wefwasdas";
+        final scanListProvider1 = Provider.of<ScanListProvider>(context, listen: false);
+        scanListProvider.nouScan(barcodeScanRes1);
       },
     );
   }
