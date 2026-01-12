@@ -20,7 +20,7 @@ class ScanModel {
   String valor;
 
   LatLng getLatLng(){
-    final latLng = this.valor.substring(4).split(',');
+    final latLng = valor.substring(4).split(',');
     final latitude = double.parse(latLng[0]);
     final longitude = double.parse(latLng[1]);
 

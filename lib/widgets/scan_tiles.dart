@@ -18,9 +18,9 @@ class ScanTiles extends StatelessWidget {
         key: UniqueKey(),
         background: Container(
           color: Colors.red,
-          child: Align(
+          child: const Align(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Icon(Icons.delete_forever),
             ),
             alignment: Alignment.centerRight,
@@ -31,7 +31,7 @@ class ScanTiles extends StatelessWidget {
         },
         child: ListTile(
           leading: Icon(
-              this.tipus == "http" ? Icons.home_outlined : Icons.map_outlined),
+              tipus == "http" ? Icons.home_outlined : Icons.map_outlined),
           title: Text(scans[index].valor),
           subtitle: Text(scans[index].id.toString()),
           trailing: const Icon(

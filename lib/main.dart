@@ -24,7 +24,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => UIProvider()),
         ChangeNotifierProvider(create: (_) => ScanListProvider())
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
