@@ -36,7 +36,7 @@ class DBProvider {
         ''');
     });
   }
-  
+
   Future<int> insertRawScan(ScanModel nouScan) async {
     final id = nouScan.id;
     final tipus = nouScan.tipus;
@@ -56,6 +56,62 @@ class DBProvider {
 
     final res = await db.insert("Scans", nouScan.toMap());
     print(res);
+    return res;
+  }
+
+  Future<List<ScanModel>> getAllScans() async {
+    final db = await database;
+    final res = await db.query('Scans');
+    return res.isNotEmpty ? res.map((e) => ScanModel.fromMap(e)).toList() : [];
+  }
+
+  Future<ScanModel?> getScanById(int id) async {
+    final db = await database;
+    final res = await db.query('Scans', where: 'id = ?', whereArgs: [id]);
+
+    if (res.isNotEmpty) {
+      return ScanModel.fromMap(res.first);
+    }
+
+    return null;
+  }
+
+  // Implementacio demanada a video 4
+  Future<List<ScanModel>> getScansByType(String tipus) async {
+    final db = await database;
+
+    final res = await db.query(
+      'Scans',
+      where: 'tipus = ?',
+      whereArgs: [tipus],
+    );
+
+    return res.isNotEmpty ? res.map((e) => ScanModel.fromMap(e)).toList() : [];
+  }
+
+  Future<int> updateScan(ScanModel nouScan) async {
+    final db = await database;
+    final res = db.update('Scans', nouScan.toMap(),
+        where: 'id = ?', whereArgs: [nouScan.id]);
+    return res;
+  }
+
+  // Implementacio demanada a video 4
+  Future<int> deleteScan(int id) async {
+    final db = await database;
+
+    final res = await db.delete(
+      'Scans',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+
+    return res;
+  }
+
+  Future<int> deleteAllScans() async {
+    final db = await database;
+    final res = await db.rawDelete('''DELETE FROM Scans''');
     return res;
   }
 }
