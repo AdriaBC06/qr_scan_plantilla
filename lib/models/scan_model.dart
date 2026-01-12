@@ -7,10 +7,10 @@ class ScanModel {
     this.tipus,
     required this.valor,
   }) {
-    if (this.valor.contains("http")) {
-      this.tipus = "http";
+    if (valor.contains("http")) {
+      tipus = "http";
     } else {
-      this.tipus = "geo";
+      tipus = "geo";
     }
   }
 
